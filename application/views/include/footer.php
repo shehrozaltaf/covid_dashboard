@@ -285,9 +285,57 @@
             .on('ifUnchecked', function () {
                 $sidebar_main.removeClass('accordion_mode');
             });
-
-
     });
+
+
+    function changePassword() {
+        altair_helpers.content_preloader_show();
+        var data = {};
+        data['OldPassword'] = $('#OldPassword').val();
+        data['Password'] = $('#NewPassword').val();
+        data['ConfirmPassword'] = $('#NewConfirmPassword').val();
+        if (data["OldPassword"] == '' || data["OldPassword"] == undefined) {
+            $('#OldPassword').addClass('md-input-danger');
+            returnMsg('msgTextPassword', 'Invalid OldPassword', 'uk-alert-danger', 'msgPassword');
+            return false;
+        } else {
+            $('#OldPassword').removeClass('md-input-danger');
+        }
+        if (data["Password"] == '' || data["Password"] == undefined) {
+            $('#NewPassword').addClass('md-input-danger');
+            returnMsg('msgTextPassword', 'Invalid New Password', 'uk-alert-danger', 'msgPassword');
+            return false;
+        } else {
+            $('#NewPassword').removeClass('md-input-danger');
+        }
+        if (data["ConfirmPassword"] == '' || data["ConfirmPassword"] == undefined) {
+            $('#NewConfirmPassword').addClass('md-input-danger');
+            returnMsg('msgTextPassword', 'Invalid Confirm Password', 'uk-alert-danger', 'msgPassword');
+            return false;
+        } else {
+            $('#NewConfirmPassword').removeClass('md-input-danger');
+        }
+
+        if (data["ConfirmPassword"] === data['Password']) {
+            CallAjax('<?php echo base_url() . 'index.php/dashboard/ChangePassword' ?>', data, 'POST', function (Result) {
+                if (Result == 1) {
+                    returnMsg('msgTextPassword', 'Successfully changed', 'uk-alert-success', 'msgPassword');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 4000);
+                } else if (Result == 3) {
+                    $('#OldPassword').addClass('md-input-danger');
+                    returnMsg('msgTextPassword', 'Old Password is incorrect', 'uk-alert-danger', 'msgPassword');
+                } else {
+                    returnMsg('msgTextPassword', 'Something went wrong, Please try again', 'uk-alert-danger', 'msgPassword');
+                }
+            });
+        } else {
+            $('#NewConfirmPassword').addClass('md-input-danger');
+            returnMsg('msgTextPassword', 'Password doesn`t Match', 'uk-alert-danger', 'msgPassword');
+            return false;
+        }
+    }
 </script>
 </body>
 </html>

@@ -75,13 +75,15 @@ $query_builder = TRUE;
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => 'f38158',
+    /*'hostname' => 'f38158',
     'username' => 'shahroz.khan',
-    'password' => 'abcd1234',
-//    'username' => 'sa',
-//    'password' => 'sa',
-    'database' => 'rsv',
-    'dbdriver' => 'sqlsrv',
+    'password' => 'abcd1234',*/
+//    'dbdriver' => 'sqlsrv',
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'covid19',
+    'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),

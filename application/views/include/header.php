@@ -14,7 +14,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon.ico"/>
     <link rel="icon" type="image/ico" href="<?= base_url() ?>assets/img/favicon.ico"/>
-    <title>RSV Form</title>
+    <title>COVID 19 - Admin Panel</title>
     <!-- uikit -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/uikit/css/uikit.almost-flat.min.css"
           media="all">
@@ -55,6 +55,8 @@
                                  alt=""/></a>
                         <div class="uk-dropdown uk-dropdown-small">
                             <ul class="uk-nav js-uk-prevent">
+                                <li><a href="javascript:void(0)" onclick="showModal('myModalChangePassword')">Change
+                                        Password</a></li>
                                 <li><a href="javascript:void(0)" onclick="logout()">Logout</a></li>
                             </ul>
                         </div>
@@ -73,3 +75,63 @@
     </div>
 </header>
 <!-- main header end -->
+
+
+<!--Change Password Box Start-->
+<div class="uk-modal" id="myModalChangePassword">
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close uk-close" type="button"></button>
+        <form id="form_validation" method="post" onsubmit="return false" class="uk-form-stacked">
+            <div id="msgPassword" style="display: none;" class="uk-alert" data-uk-alert>
+                <a href="javascript:void(0)" class="uk-alert-close uk-close"></a>
+
+                <p id="msgTextPassword"></p>
+            </div>
+            <div class="uk-modal-header">
+                <h3 class="uk-modal-title">Change Password</h3>
+            </div>
+            <div class="uk-margin-medium-bottom">
+
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <input type="hidden" id="idUser">
+                            <label for="OldPassword">Rewrtie old Password<span class="req">*</span></label>
+                            <input type="password" name="OldPassword" id="OldPassword" required class="md-input"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <label for="NewPassword">Password<span class="req">*</span></label>
+                            <input type="password" name="NewPassword" id="NewPassword" required class="md-input"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="md-card-content">
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <label for="NewConfirmPassword">Confirm Password<span class="req">*</span></label>
+                            <input type="password" name="NewConfirmPassword" id="NewConfirmPassword" required
+                                   class="md-input"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+            </div>
+            <div class="uk-modal-footer">
+                <button type="submit" onclick="changePassword()" id="btn-ChangePassword"
+                        class="uk-float-right md-btn md-btn-flat md-btn-flat-primary">
+                    Change Password
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Change Password Box End-->

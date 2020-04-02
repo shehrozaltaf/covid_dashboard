@@ -66,6 +66,11 @@ function validateEmail(mail) {
     }
 }
 
+function maskedPhoneNo(id) {
+    $(id).kendoMaskedTextBox({
+        mask: "(9999) 000-0000"
+    });
+}
 
 function validateNum(phoneNoDiv) {
     $('#' + phoneNoDiv).keydown(function (event) {
@@ -81,11 +86,10 @@ function validateNum(phoneNoDiv) {
         }
     });
 }
-
 function returnMsg(divTextId, TextMsg, divTextclass, divId) {
     altair_helpers.content_preloader_hide();
     $('#' + divTextId).html('').html(TextMsg);
-    $('#' + divId).addClass(divTextclass).css('display', 'block');
+    $('#' + divId).removeClass('danger').removeClass('success').addClass(divTextclass).css('display', 'block');
     setTimeout(function () {
         $('#' + divTextId).html('');
         $('#' + divId).css('display', 'none');

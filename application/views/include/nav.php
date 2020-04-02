@@ -3,18 +3,18 @@
     <div class="sidebar_main_header">
         <div class="sidebar_logo">
             <a href="<?= base_url() ?>" class="sSidebar_hide sidebar_logo_large">
-                <h3>RSV Form</h3>
+                <h3>COVID 19</h3>
             </a>
             <a href="<?= base_url() ?>" class="sSidebar_show sidebar_logo_small">
-                <h3>RSV Form</h3>
+                <h3>COVID 19</h3>
             </a>
         </div>
     </div>
     <div class="menu_section">
         <ul id="sideBarMenu">
             <li title="Form">
-                <a href="<?php echo base_url('index.php/Form') ?>">
-                    <span class="menu_title">Form</span>
+                <a href="<?php echo base_url('index.php/dashboard') ?>">
+                    <span class="menu_title">Dashboard</span>
                 </a>
             </li>
             <li title="Users">
